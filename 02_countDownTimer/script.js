@@ -41,9 +41,9 @@ currentMode.addEventListener("click", () => {
 window.onload = () => {
   let savedTime = localStorage.getItem("timer");
   isRunning = "pause";
-  totalCountdownTime = parseInt(savedTime);
+  totalCountdownTime = parseInt(savedTime) || 0;
   const result = settingClientData();
-  console.log(result, totalCountdownTime);
+  console.log(result, totalCountdownTime, savedTime);
   if (totalCountdownTime > 0) {
     setTimerButton.setAttribute("disabled", true);
   }
@@ -54,10 +54,10 @@ setTimerButton.addEventListener("click", setTimerFunction);
 
 //function for setting data
 function settingClientData() {
-  const day = Math.floor(totalCountdownTime / 86400);
-  const hour = Math.floor((totalCountdownTime % 86400) / 3600);
-  const minute = Math.floor((totalCountdownTime % 3600) / 60);
-  const second = Math.floor(totalCountdownTime % 60);
+  const day = Math.floor(totalCountdownTime / 86400) || 0;
+  const hour = Math.floor((totalCountdownTime % 86400) / 3600) || 0;
+  const minute = Math.floor((totalCountdownTime % 3600) / 60) || 0;
+  const second = Math.floor(totalCountdownTime % 60) || 0;
   dayDisplay.innerText = day.toString().padStart(2, "0");
   hourDisplay.innerText = hour.toString().padStart(2, "0");
   minuteDisplay.innerText = minute.toString().padStart(2, "0");
