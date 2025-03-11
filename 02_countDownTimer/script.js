@@ -42,8 +42,7 @@ window.onload = () => {
   let savedTime = localStorage.getItem("timer");
   isRunning = "pause";
   totalCountdownTime = parseInt(savedTime) || 0;
-  const result = settingClientData();
-  console.log(result, totalCountdownTime, savedTime);
+  settingClientData();
   if (totalCountdownTime > 0) {
     setTimerButton.setAttribute("disabled", true);
   }
@@ -62,7 +61,6 @@ function settingClientData() {
   hourDisplay.innerText = hour.toString().padStart(2, "0");
   minuteDisplay.innerText = minute.toString().padStart(2, "0");
   secondDisplay.innerText = second.toString().padStart(2, "0");
-  return { day, hour, minute, second };
 }
 
 //setting interval
